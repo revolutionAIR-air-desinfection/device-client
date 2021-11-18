@@ -3,10 +3,13 @@
 #include <avr/power.h>
 #endif
 
+// #include <LEDeffects/rainbowMoving.h> coming soon ...
+
 #define PIN D1 // LED strip
 #define NUMPIXELS 34
 
 #define LEDfade_duration 40000 // time in ms the LED stripe needs to fade for 1 cycle
+#define pulseDelay 10 // delay for pulsing warnging/error LED indicator
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
@@ -17,9 +20,10 @@ void LEDstripe_setup()
 #endif
   pixels.begin();
   pixels.clear();
+  // rainbowMoving_setup();
 }
 
-void applyAllLeds(int r, int g, int b) // apply color to all 16 leds on stripe
+void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
 {
   for (int led = 0; led < NUMPIXELS; led++)
   {
@@ -51,11 +55,20 @@ void rainbow(int DELAYVAL) // a cool rainbow fading effect
   }
 }
 
-void WifiNotConnected () {
-  applyAllLeds(255, 184, 5); // yellow
+void pulseBrightness(int r, int g, int b)
+{
+  for (int i = 1; i <= 100; i++)
+  {
+    int brightness = (254 / 2) * sin((2 * PI) / 100 * (i + 75)) + (254 / 2) + 1; // sinus wave
+    pixels.setBrightness(brightness);
+    applyAllLeds(r, g, b);
+    pixels.show();
+    delay(pulseDelay);
+  }
 }
 
 void LEDstripe_loop()
 {
   rainbow(LEDfade_duration);
+  // rainbowMoving_loop(); not working
 }

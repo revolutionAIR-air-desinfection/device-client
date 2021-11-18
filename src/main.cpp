@@ -4,12 +4,13 @@
 #endif
 
 // LED stripe stuff
-#include <LEDstripe.h>
+// #include <LEDstripe.h> (already included by <connectWIFI.h>)
 
 // connectWIFI stuff
 #include <connectWIFI.h>
-const char *ssid = "Pixelspot";     // wifi SSID
-const char *password = "asdfjklo"; // wifi Password
+
+const char *ssid = "";     // wifi SSID
+const char *password = ""; // wifi Password
 
 void setup()
 {
@@ -24,10 +25,10 @@ void setup()
 void loop()
 {
     // LED stripe stuff
-    WifiNotConnected();
+    WifiNotConnected(); // TODO: enable
 
     // connectWIFI stuff
-    connectWIFI_setup(ssid, password);
+    connectWIFI_setup(ssid, password); // TODO: enable
 
     // LEDstripe stuff
     LEDstripe_loop();
