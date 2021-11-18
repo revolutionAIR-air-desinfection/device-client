@@ -1,4 +1,4 @@
 # Colors
 
-red: device open
-yellow: no connection to WIFI
+<p>**RED:** device open</p>
+<p>**YELLOW:** no connection to WIFI</p>
