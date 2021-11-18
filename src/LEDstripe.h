@@ -6,6 +6,8 @@
 #define PIN D1 // LED strip
 #define NUMPIXELS 34
 
+#define LEDfade_duration 40000 // time in ms the LED stripe needs to fade for 1 cycle
+
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 void LEDstripe_setup()
@@ -47,4 +49,9 @@ void rainbow(int DELAYVAL) // a cool rainbow fading effect
     applyAllLeds(0, k, 255 - k);
     delay(DELAYVAL);
   }
+}
+
+void LEDstripe_loop()
+{
+  rainbow(LEDfade_duration);
 }

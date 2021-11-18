@@ -5,7 +5,11 @@
 
 // LED stripe stuff
 #include <LEDstripe.h>
-#define LEDfade_duration 40000 // time in ms the LED stripe needs to fade for 1 cycle
+
+// connectWIFI stuff
+#include <connectWIFI.h>
+const char *ssid = "projektebg";     // wifi SSID
+const char *password = "9749970526914394"; // wifi Password
 
 void setup()
 {
@@ -14,10 +18,13 @@ void setup()
 
     // LEDstripe stuff
     LEDstripe_setup();
+
+    // connectWIFI stuff
+    connectWIFI_setup(ssid, password);
 }
 
 void loop()
 {
     // LEDstripe stuff
-    rainbow(LEDfade_duration);
+    LEDstripe_loop();
 }
