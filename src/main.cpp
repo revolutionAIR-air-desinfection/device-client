@@ -8,8 +8,8 @@
 
 // connectWIFI stuff
 #include <connectWIFI.h>
-const char *ssid = "projektebg";     // wifi SSID
-const char *password = "9749970526914394"; // wifi Password
+const char *ssid = "Pixelspot";     // wifi SSID
+const char *password = "asdfjklo"; // wifi Password
 
 void setup()
 {
@@ -19,12 +19,16 @@ void setup()
     // LEDstripe stuff
     LEDstripe_setup();
 
-    // connectWIFI stuff
-    connectWIFI_setup(ssid, password);
 }
 
 void loop()
 {
+    // LED stripe stuff
+    WifiNotConnected();
+
+    // connectWIFI stuff
+    connectWIFI_setup(ssid, password);
+
     // LEDstripe stuff
     LEDstripe_loop();
 }

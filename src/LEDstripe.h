@@ -51,6 +51,10 @@ void rainbow(int DELAYVAL) // a cool rainbow fading effect
   }
 }
 
+void WifiNotConnected () {
+  applyAllLeds(255, 184, 5); // yellow
+}
+
 void LEDstripe_loop()
 {
   rainbow(LEDfade_duration);

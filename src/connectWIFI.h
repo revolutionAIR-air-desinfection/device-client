@@ -8,9 +8,8 @@ void connectWIFI_setup(const char *ssid, const char *password) {
     Serial.println("Connecting to Wifi");
     while (WiFi.status() != WL_CONNECTED)
     {
-        delay(500);
+        delay(1000);
         Serial.print(".");
-        delay(500);
     }
-    Serial.println("Connected");
+    Serial.println("\nConnected");
 }
