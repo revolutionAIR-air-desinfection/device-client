@@ -19,6 +19,5 @@ void setup()
 void loop()
 {
     // LEDstripe stuff
-    Serial.print("loop");
     rainbow(LEDfade_duration);
 }
