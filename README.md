@@ -1,4 +1,4 @@
 # Colors
 
 <p>RED: device open</p>
-<p>YELLOW: no connection to WIFI</p>
+<p>YELLOW: no WIFI connection</p>
