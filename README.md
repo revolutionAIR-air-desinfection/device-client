@@ -12,4 +12,3 @@ COLOR           |   MEANING
 :blue_heart:    |   -
 :green_heart:   |   -
 :purple_heart:  |   -
-:white_circle:  |   -
