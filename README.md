@@ -8,3 +8,7 @@ COLOR           |   MEANING
 -------------   |   -------------
 :heart:         |   device open
 :yellow_heart:  |   no WIFI connection
+:blue_heart:    |   -
+:green_heart:   |   -
+:purple_heart:  |   -
+:white_circle:  |   -
