@@ -9,27 +9,44 @@
 // connectWIFI stuff
 #include <connectWIFI.h>
 
-const char *ssid = "";     // wifi SSID
-const char *password = ""; // wifi Password
+// FAN stuff
+#include <fan.h>
+
+// Relais stuff
+#include <relais.h>
+
+const char *ssid = "Pixelspot";     // wifi SSID
+const char *password = "123456789"; // wifi Password
 
 void setup()
 {
-    // general stuff
+    // ============== general ==============
     Serial.begin(9600);
 
-    // LEDstripe stuff
+    // ============== fan ==============
+    fan_setup();
+
+    // ============== LEDstripe ==============
     LEDstripe_setup();
 
+    // ============== relais ==============
+    relais_setup();
 }
-
+ 
 void loop()
 {
-    // LED stripe stuff
-    WifiNotConnected(); // TODO: enable
+    // ============== connectWIFI ==============
+    // connectWIFI(ssid, password);
 
-    // connectWIFI stuff
-    connectWIFI_setup(ssid, password); // TODO: enable
+    // ============== relais ==============
+    // relaisON();
+    // relaisOFF();
 
-    // LEDstripe stuff
-    LEDstripe_loop();
+    // ============== fan ============== 
+    fan_loop();
+
+    // ============== LEDstripe ============== 
+    // LEDstripe_loop(); // takes very long
+
+    // applyAllLeds(0, 255, 255);
 }

@@ -1,14 +1,11 @@
 #include <Adafruit_NeoPixel.h>
-#ifdef __AVR__
-#include <avr/power.h>
-#endif
 
 // #include <LEDeffects/rainbowMoving.h> coming soon ...
 
 #define PIN D1 // LED strip
 #define NUMPIXELS 34
 
-#define LEDfade_duration 40000 // time in ms the LED stripe needs to fade for 1 cycle
+#define LEDfade_duration 2000 // time in ms the LED stripe needs to fade for 1 cycle
 #define pulseDelay 10 // delay for pulsing warnging/error LED indicator
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
@@ -20,7 +17,6 @@ void LEDstripe_setup()
 #endif
   pixels.begin();
   pixels.clear();
-  // rainbowMoving_setup();
 }
 
 void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
@@ -62,13 +58,13 @@ void pulseBrightness(int r, int g, int b)
     int brightness = (254 / 2) * sin((2 * PI) / 100 * (i + 75)) + (254 / 2) + 1; // sinus wave
     pixels.setBrightness(brightness);
     applyAllLeds(r, g, b);
-    pixels.show();
     delay(pulseDelay);
   }
 }
 
 void LEDstripe_loop()
 {
+  pixels.clear();
+  pixels.setBrightness(254);
   rainbow(LEDfade_duration);
-  // rainbowMoving_loop(); not working
 }
