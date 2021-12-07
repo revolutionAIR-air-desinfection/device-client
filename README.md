@@ -7,8 +7,8 @@ The smartest air disinfector in the world! IoT integration with MQTT and mobile 
 COLOR           |   MEANING
 -------------   |   -------------
 :rainbow:       |   everything is fine :white_check_mark:
-:blue_heart:    |   -
-:purple_heart:  |   -
-:heart:         |   device open
-:yellow_heart:  |   no WIFI connection
 :green_heart:   |   -
+:yellow_heart:  |   no WIFI connection
+:heart:         |   device open
+:purple_heart:  |   -
+:blue_heart:    |   -
