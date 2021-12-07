@@ -6,5 +6,5 @@ The smartest air disinfector in the world! IoT integration with MQTT and mobile 
 
 COLOR           |   MEANING
 -------------   |   -------------
-:heart:    |   device open
+:heart:         |   device open
 :yellow_heart:  |   no WIFI connection
