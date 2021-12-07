@@ -1,7 +1,8 @@
 #include <ESP8266WiFi.h>
 #include <LEDeffects/pulseWarning.h>
+#include <future> 
 
-void connectWIFI_setup(const char *ssid, const char *password)
+void connectWIFI(const char *ssid, const char *password)
 {
     if (WiFi.status() != WL_CONNECTED)
     {
