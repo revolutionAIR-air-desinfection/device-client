@@ -5,15 +5,13 @@
 
 // connectWIFI stuff
 #include <connectWIFI.h>
+# include <credentials.h>
 
 // FAN stuff
 #include <fan.h>
 
 // Relais stuff
 #include <relais.h>
-
-const char *ssid = "Pixelspot";     // wifi SSID
-const char *password = "123456789"; // wifi Password
 
 void setup()
 {
