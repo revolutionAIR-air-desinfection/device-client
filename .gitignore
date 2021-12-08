@@ -4,4 +4,4 @@
 .vscode/launch.json
 .vscode/ipch
 src/.temp
-credentials.h
+src/credentials.h
