@@ -1,5 +1,5 @@
 #include <ESP8266WiFi.h>
-#include <LEDeffects/pulseWarning.h>
+#include <LED/effects/pulseWarning.h>
 // #include <future> don't know why this is there but afraid to remove...
 
 void connectWIFI(const char *ssid, const char *password)

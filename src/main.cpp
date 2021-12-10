@@ -1,7 +1,7 @@
 #include <Adafruit_NeoPixel.h>
 
 // ============== LED stripe ==============
-// #include <LEDstripe.h> (already included by <connectWIFI.h>)
+// #include <LED/LEDstripe.h> // (already included by <connectWIFI.h>)
 
 
 // ============== MQTT ==============
@@ -9,16 +9,16 @@
 
 
 // ============== connectWIFI ==============
-#include <connectWIFI.h>
+#include <WiFi/connectWIFI.h>
 # include <credentials.h>
 
 
 // ============== FAN ==============
-#include <fan.h>
+#include <fan/fan.h>
 
 
 // ============== RELAIS ==============
-#include <relais.h>
+#include <UVC/relais.h>
 
 
 void setup()

@@ -1,4 +1,4 @@
-#include <LEDstripe.h>
+#include <LED/LEDstripe.h>
 
 void WifiNotConnected()
 {
