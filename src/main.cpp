@@ -9,8 +9,7 @@
 
 
 // ============== connectWIFI ==============
-#include <WiFi/connectWIFI.h>
-# include <credentials.h>
+// # include <credentials.h>
 
 
 // ============== FAN ==============
@@ -28,7 +27,7 @@ void setup()
 
 
     // ============== fan ==============
-    fan_setup();
+    // fan_setup();
 
 
     // ============== LEDstripe ==============
@@ -36,13 +35,16 @@ void setup()
 
 
     // ============== relais ==============
-    relais_setup();
+    // relais_setup();
+
+    // ============== mqtt ==============
+    // mqtt_setup();
 }
  
 void loop()
 {
     // ============== connectWIFI ==============
-    // connectWIFI(ssid, password);
+    // connectWIFI();
 
 
     // ============== relais ==============
@@ -51,10 +53,13 @@ void loop()
 
 
     // ============== fan ============== 
-    fan_loop();
+    // fan_loop(100);
+
+
+    // ============== mqtt ==============
+    // mqtt_loop();
 
 
     // ============== LEDstripe ============== 
-    // LEDstripe_loop(); // takes very long
-    // applyAllLeds(0, 255, 255);
+    LEDstripe_loop(); // takes very long
 }

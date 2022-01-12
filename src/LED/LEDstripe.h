@@ -9,7 +9,7 @@
 #define LEDfade_duration 2000 // time in ms the LED stripe needs to fade for 1 cycle
 #define pulseDelay 10         // delay for pulsing warnging/error LED indicator
 
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+// Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 void LEDstripe_setup()
 {
@@ -20,14 +20,14 @@ void LEDstripe_setup()
   pixels.clear();
 }
 
-void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
-{
-  for (int led = 0; led < NUMPIXELS; led++)
-  {
-    pixels.setPixelColor(led, pixels.Color(r, g, b));
-  }
-  pixels.show();
-}
+// void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
+// {
+//   for (int led = 0; led < NUMPIXELS; led++)
+//   {
+//     pixels.setPixelColor(led, pixels.Color(r, g, b));
+//   }
+//   pixels.show();
+// }
 
 void pulseBrightness(int r, int g, int b)
 {
