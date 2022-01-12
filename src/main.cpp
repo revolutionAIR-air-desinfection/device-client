@@ -35,7 +35,7 @@ void setup()
 
 
     // ============== relais ==============
-    // relais_setup();
+    relais_setup();
 
     // ============== mqtt ==============
     // mqtt_setup();
@@ -44,7 +44,7 @@ void setup()
 void loop()
 {
     // ============== connectWIFI ==============
-    // connectWIFI();
+    connectWIFI();
 
 
     // ============== relais ==============
@@ -53,7 +53,7 @@ void loop()
 
 
     // ============== fan ============== 
-    // fan_loop(100);
+    // fan_loop(50);
 
 
     // ============== mqtt ==============
