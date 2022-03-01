@@ -1,6 +1,6 @@
 #include <ESP8266WiFi.h>
 
-#define RELAIS D2
+#define RELAIS D1
 
 void relais_setup()
 {

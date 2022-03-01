@@ -12,3 +12,4 @@ COLOR           |   MEANING
 :heart:         |   device open
 :purple_heart:  |   -
 :blue_heart:    |   -
+

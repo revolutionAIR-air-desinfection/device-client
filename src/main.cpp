@@ -3,21 +3,24 @@
 // ============== LED stripe ==============
 // #include <LED/LEDstripe.h> // (already included by <connectWIFI.h>)
 
+// ============== WIFI ==============
+#include <WiFi/connectWIFI.h>
+
 
 // ============== MQTT ==============
-#include <MQTT/client.h>
+// #include <MQTT/client.h>
 
 
 // ============== connectWIFI ==============
-// # include <credentials.h>
+// # include <credentials.h> // (already included by <connectWIFI.h>)
 
 
 // ============== FAN ==============
-#include <fan/fan.h>
+// #include <fan/fan.h>
 
 
 // ============== RELAIS ==============
-#include <UVC/relais.h>
+// #include <UVC/relais.h>
 
 
 void setup()
@@ -31,21 +34,22 @@ void setup()
 
 
     // ============== LEDstripe ==============
-    LEDstripe_setup();
+    // LEDstripe_setup();
 
 
     // ============== relais ==============
-    relais_setup();
+    // relais_setup();
+
 
     // ============== mqtt ==============
-    // mqtt_setup();
+    // mqtt_setup();    
 }
  
 void loop()
 {
-    // ============== connectWIFI ==============
+    // ============== WIFI ==============
     connectWIFI();
-
+    clientLoop();
 
     // ============== relais ==============
     // relaisON();
@@ -61,5 +65,5 @@ void loop()
 
 
     // ============== LEDstripe ============== 
-    LEDstripe_loop(); // takes very long
+    // LEDstripe_loop(); // takes very long
 }
