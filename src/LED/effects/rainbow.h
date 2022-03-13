@@ -5,11 +5,6 @@
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-//? ============== testing ==============
-#define BTN D0
-#define RELAIS D1
-boolean state = false;
-
 void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
 {
   for (int led = 0; led < NUMPIXELS; led++)
@@ -17,14 +12,6 @@ void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
     pixels.setPixelColor(led, pixels.Color(r, g, b));
   }
   pixels.show();
-
-  //? ============== testing ==============
-  if (digitalRead(BTN))
-  {
-    state = !state;
-    digitalWrite(RELAIS, state);
-    digitalWrite(D3, !state);
-  }
 }
 
 void rainbow(int DELAYVAL) // a cool rainbow fading effect

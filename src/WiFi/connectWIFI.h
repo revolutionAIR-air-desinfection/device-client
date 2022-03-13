@@ -3,7 +3,7 @@
 #include <credentials.h>
 #include <WiFi/ClientHandler.h>
 
-WiFiServer wifiServer(80);
+WiFiServer wifiServer(1080);
 
 void connectWIFI()
 {
@@ -52,6 +52,8 @@ void clientLoop()
                 handleCommand(command);
             }
             
+            Blue();
+
             delay(10);
         }
 

@@ -1,23 +1,36 @@
 #include <UVC/relais.h>
 #include <fan/fan.h>
 
+bool isDeviceON = false;
+
+void setDeviceState(bool state) {
+    isDeviceON = state;
+}
+
 void handleCommand(String cmd) {
 
+    Serial.println(cmd);
+
     if(cmd.equalsIgnoreCase("FAN ON")) {
-        Serial.print(cmd); // TODO: log
         fanON();
+
     } else if(cmd.equalsIgnoreCase("FAN OFF")) {
-        Serial.print(cmd); // TODO: log
         fanOFF();
+
     } else if(cmd.equalsIgnoreCase("UVC ON")) {
-        Serial.print(cmd); // TODO: log
         relaisON();
+
     } else if(cmd.equalsIgnoreCase("UVC OFF")) {
-        Serial.print(cmd); // TODO: log
         relaisOFF();
+
+    } else if(cmd.equalsIgnoreCase("DEVICE ON")) {
+        setDeviceState(true);
+        
+    } else if(cmd.equalsIgnoreCase("DEVICE OFF")) {
+        setDeviceState(false);
+        
     } else {
         // TODO: not implemented yet
-        Serial.print(cmd); // TODO: log
     }
 
 }

@@ -6,14 +6,10 @@
 #define PIN D2 // LED strip
 #define NUMPIXELS 34
 
-#define LEDfade_duration 175000 // time in ms the LED stripe needs to fade for 1 cycle
+#define LEDfade_duration 10000 // time in ms the LED stripe needs to fade for 1 cycle
 #define pulseDelay 10         // delay for pulsing warnging/error LED indicator
 
 // Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-//? ============== testing ==============
-#define BTN D0
-#define RELAIS D1
 
 void LEDstripe_setup()
 {
@@ -23,10 +19,7 @@ void LEDstripe_setup()
   pixels.begin();
   pixels.clear();
 
-  // ============== testing ==============
-  pinMode(BTN, INPUT);
-  pinMode(RELAIS, OUTPUT);
-  pinMode(D3, OUTPUT);
+  pinMode(PIN, OUTPUT);
 }
 
 // void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
