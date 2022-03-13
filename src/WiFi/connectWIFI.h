@@ -1,6 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <LED/effects/pulseWarning.h>
-#include <credentials.h>
+#include <credentials/credentials.h>
 #include <WiFi/ClientHandler.h>
 
 WiFiServer wifiServer(1080);

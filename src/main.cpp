@@ -12,7 +12,7 @@
 
 
 // ============== connectWIFI ==============
-// # include <credentials.h> // (already included by <connectWIFI.h>)
+// # include <credentials/credentials.h> // (already included by <connectWIFI.h>)
 
 
 // ============== FAN ==============
