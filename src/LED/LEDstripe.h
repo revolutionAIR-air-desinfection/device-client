@@ -1,5 +1,7 @@
 #include <Adafruit_NeoPixel.h>
-#include <LED/effects/rainbow.h>
+
+// #include <LED/effects/rainbow.h>
+#include "../LED/effects/rainbow.h"
 
 // #include <LEDeffects/rainbowMoving.h> coming soon ...
 
@@ -46,5 +48,6 @@ void LEDstripe_loop()
 {
   pixels.clear();
   pixels.setBrightness(254);
-  rainbow(LEDfade_duration);
+  // rainbow(LEDfade_duration);
+  
 }
