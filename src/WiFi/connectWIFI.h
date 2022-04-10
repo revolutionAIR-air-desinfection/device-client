@@ -1,63 +1,65 @@
 #include <ESP8266WiFi.h>
-#include <LED/effects/pulseWarning.h>
-#include <credentials/credentials.h>
-#include <WiFi/ClientHandler.h>
+
+#include "../LED/effects/pulseWarning.h"
+#include "../credentials/credentials.h"
+#include "../WiFi/ClientHandler.h"
 
 WiFiServer wifiServer(1080);
 
 void connectWIFI()
 {
-    if (WiFi.status() != WL_CONNECTED)
-    {
-        WiFi.mode(WIFI_STA);
-        WiFi.begin(ssid, password); // Connect to wifi
+  delay(10);
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
 
-        // Wait for connection with lil animation
-        Serial.println("Connecting to Wifi");
-        while (WiFi.status() != WL_CONNECTED)
-        {
-            Serial.print(".");
-            WifiNotConnected();
-        }
-        Serial.println("\nConnected");
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
 
-        // ========== CLIENT =================
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+    WifiNotConnected(); // pulseWarning
+  }
 
-        Serial.println(WiFi.localIP());
+  randomSeed(micros());
 
-        wifiServer.begin();
-    }
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 }
 
-void clientLoop()
-{
-    WiFiClient client = wifiServer.available();
+// void clientLoop()
+// {
+//     WiFiClient client = wifiServer.available();
 
-    if (client)
-    {
+//     if (client)
+//     {
 
-        while (client.connected())
-        {
+//         while (client.connected())
+//         {
 
-            String command = "";
-            while (client.available() > 0)
-            {
-                char c = client.read();
-                command += c;
-                // client.write(c); // echo bounce back to client
-            }
-            if (!command.isEmpty())
-            {
-                // Serial.print(command);
-                handleCommand(command);
-            }
+//             String command = "";
+//             while (client.available() > 0)
+//             {
+//                 char c = client.read();
+//                 command += c;
+//                 // client.write(c); // echo bounce back to client
+//             }
+//             if (!command.isEmpty())
+//             {
+//                 // Serial.print(command);
+//                 handleCommand(command);
+//             }
             
-            Blue();
+//             Blue();
 
-            delay(10);
-        }
+//             delay(10);
+//         }
 
-        client.stop();
-        Serial.println("Client disconnected");
-    }
-}
+//         client.stop();
+//         Serial.println("Client disconnected");
+//     }
+// }
