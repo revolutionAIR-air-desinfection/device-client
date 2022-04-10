@@ -7,10 +7,10 @@ void relais_setup()
 
 void relaisON() 
 {
-    digitalWrite(RELAIS, HIGH);
+    digitalWrite(RELAIS, LOW);
 }
 
 void relaisOFF()
 {
-    digitalWrite(RELAIS, LOW);
+    digitalWrite(RELAIS, HIGH);
 }
