@@ -14,27 +14,28 @@ void applyAllLeds(int r, int g, int b) // apply color to all 34 leds on stripe
   pixels.show();
 }
 
-void rainbow(int DELAYVAL) // a cool rainbow fading effect
+void rainbow(int DELAYVAL) // rainbow fading effect
 {
   // devide by 3 because 3 for loops and
   // 255 because delay is applied 255 times per rgb color
   DELAYVAL = DELAYVAL / 3 / 255;
 
-  for (int k = 0; k <= 255; k++) // green
+  // green
+  for (int k = 0; k <= 255; k++)
   {
     applyAllLeds(k, 255 - k, 0);
     delay(DELAYVAL);
   }
 
-
-  for (int k = 0; k <= 255; k++) // red
+  // red
+  for (int k = 0; k <= 255; k++)
   {
     applyAllLeds(255 - k, 0, k);
     delay(DELAYVAL);
   }
 
-
-  for (int k = 0; k <= 255; k++) // blue
+  // blue
+  for (int k = 0; k <= 255; k++)
   {
     applyAllLeds(0, k, 255 - k);
     delay(DELAYVAL);
