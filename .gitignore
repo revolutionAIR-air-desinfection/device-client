@@ -1,4 +1,5 @@
 src/credentials
 .pio
 src/.temp
+data
 .vscode
