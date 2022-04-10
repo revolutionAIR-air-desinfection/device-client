@@ -15,11 +15,11 @@ void fan_loop(float percentage)
 */
 
 void fanON() {
-    analogWrite(PWM, 1023);
+    // analogWrite(PWM, 1023);
 }
 
 void fanOFF() {
-    analogWrite(PWM, 0);
+    // analogWrite(PWM, 0);
 }
 
-// TODO: rework this file
+// TODO: hardware unable to control fans
