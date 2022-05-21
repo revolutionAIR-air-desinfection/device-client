@@ -1,58 +1,34 @@
-#include <Adafruit_NeoPixel.h>
+#include <Arduino.h>
+// #include <Thread.h>
+// #include <ThreadController.h>
 
-// ============== LED stripe ==============
-// #include <LED/LEDstripe.h> // (already included by <connectWIFI.h>)
+#include "./src/mqtt/MqttClient.h"
 
-// ============== WIFI ==============
-// #include <WiFi/connectWIFI.h>
+// ThreadController controller = ThreadController();
 
-// ============== MQTT ==============
-#include "./src/MQTT/mqttclient.h"
-
-// ============== connectWIFI ==============
-// # include <credentials/credentials.h> // (already included by <connectWIFI.h>)
-
-// ============== FAN ==============
-// #include <fan/fan.h> // (already included by <ClientHandler.h>)
-
-// ============== RELAIS ==============
-// #include <UVC/relais.h>  // (already included by <ClientHandler.h>)
+// Thread *mqttThread = new Thread();
+// Thread *rainbowThread = new Thread();
 
 void setup()
 {
-  // ============== general ==============
-  Serial.begin(9600);
+    Serial.begin(9600);
 
-  // ============== fan ==============
-  fan_setup();
+    // ledStripe_setup();
+    // relais_setup();
 
-  // ============== LEDstripe ==============
-  LEDstripe_setup();
+    mqtt_setup();
 
-  // ============== relais ==============
-  relais_setup();
+    // configuring threads
+    // mqttThread->onRun(mqtt_loop);
+    // rainbowThread->onRun(ledStripe_loop);
 
-  // ============== mqtt ==============
-  mqtt_setup();
+    // controller.add(mqttThread);
+    // controller.add(rainbowThread);
 }
 
 void loop()
 {
-
-  // ============== WIFI ==============
-  // connectWIFI(); // called in mqttclient.h, mqtt_setup()
-
-  // ============== relais ==============
-  // relaisON();
-  // relaisOFF();
-
-  // ============== fan ==============
-  // fan_loop(50);
-
-  // ============== mqtt ==============
-  mqtt_loop();
-
-  // ============== LEDstripe ==============
-  // LEDstripe_loop(); // takes very long
-  Blue();
+    // controller.run();
+    mqtt_loop();
+    // ledStripe_loop();
 }
