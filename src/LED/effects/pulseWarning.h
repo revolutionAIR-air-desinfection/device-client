@@ -1,15 +1,21 @@
-// #include <LED/LEDstripe.h>
-#include "../../LED/LEDstripe.h"
+#include "../LedStripe.h"
 
-void WifiNotConnected()
+void wifiNotConnected()
 {
-  pulseBrightness(255, 255, 0); // yellow, 10ms timeout
+	pulseBrightness(255, 255, 0); // yellow
 }
 
-void DeviceOpen() {
-  pulseBrightness(255, 0, 0); // red, 10ms timeout
+void deviceOpen()
+{
+	pulseBrightness(255, 0, 0); // red
 }
 
-void Blue() {
-  pulseBrightness(0, 0, 255); // blue, 10ms timeout
+void mqttServerDisconnected()
+{
+	pulseBrightness(255, 165, 0); // orange
+}
+
+void blue()
+{
+	pulseBrightness(0, 0, 255); // blue
 }

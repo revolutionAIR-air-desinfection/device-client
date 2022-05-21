@@ -1,65 +1,32 @@
 #include <ESP8266WiFi.h>
 
-#include "../LED/effects/pulseWarning.h"
-#include "../credentials/credentials.h"
-#include "../WiFi/ClientHandler.h"
+#include "../led/effects/PulseWarning.h" // #include "led/LedStripe.h"
+#include "../credentials/Credentials.h"
+#include "../wifi/ClientHandler.h" // #include "uvc/Relais.h", #include "fan/Fan.h"
 
 WiFiServer wifiServer(1080);
 
 void connectWIFI()
 {
-  delay(10);
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+	delay(10);
+	Serial.println();
+	Serial.print("Connecting to ");
+	Serial.println(ssid);
 
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+	WiFi.mode(WIFI_STA);
+	WiFi.begin(ssid, password);
 
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-    WifiNotConnected(); // pulseWarning
-  }
+	while (WiFi.status() != WL_CONNECTED)
+	{
+		delay(500);
+		Serial.print(".");
+		wifiNotConnected(); // pulseWarning
+	}
 
-  randomSeed(micros());
+	randomSeed(micros());
 
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+	Serial.println("");
+	Serial.println("WiFi connected");
+	Serial.println("IP address: ");
+	Serial.println(WiFi.localIP());
 }
-
-// void clientLoop()
-// {
-//     WiFiClient client = wifiServer.available();
-
-//     if (client)
-//     {
-
-//         while (client.connected())
-//         {
-
-//             String command = "";
-//             while (client.available() > 0)
-//             {
-//                 char c = client.read();
-//                 command += c;
-//                 // client.write(c); // echo bounce back to client
-//             }
-//             if (!command.isEmpty())
-//             {
-//                 // Serial.print(command);
-//                 handleCommand(command);
-//             }
-            
-//             Blue();
-
-//             delay(10);
-//         }
-
-//         client.stop();
-//         Serial.println("Client disconnected");
-//     }
-// }

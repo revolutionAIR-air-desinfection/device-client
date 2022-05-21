@@ -1,4 +1,4 @@
-#define RELAIS D1
+#include <Arduino.h>
 
 void relais_setup()
 {
