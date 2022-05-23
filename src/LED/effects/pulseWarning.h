@@ -2,20 +2,15 @@
 
 void wifiNotConnected()
 {
-	pulseBrightness(255, 255, 0); // yellow
+	pulseBrightness(WIFI_NOT_CONNECTED); // yellow
 }
 
 void deviceOpen()
 {
-	pulseBrightness(255, 0, 0); // red
+	pulseBrightness(DEVICE_OPEN); // red
 }
 
 void mqttServerDisconnected()
 {
-	pulseBrightness(255, 165, 0); // orange
-}
-
-void blue()
-{
-	pulseBrightness(0, 0, 255); // blue
+	pulseBrightness(MQTT_SERVER_DISCONNECTED); // orange
 }

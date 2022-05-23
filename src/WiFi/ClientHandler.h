@@ -1,21 +1,6 @@
-// TODO: use switch case instead https://www.codeguru.com/cplusplus/switch-on-strings-in-c/
-
 #include "../uvc/Relais.h"
 #include "../fan/Fan.h"
-
-// #include <iostream>
-// #include <string>
-// #include <sstream>
-// #include <vector>
-// #include <iterator>
-// #include <cstdint>
-
-// using std::cin;
-// using std::cout;
-// using std::endl;
-// using std::istringstream;
-// using std::string;
-// using std::vector;
+// #include "../config.h"
 
 typedef uint8_t BYTE;
 
@@ -32,37 +17,9 @@ void debug(String cmd)
 	Serial.println("[DEBUG] " + cmd);
 }
 
-void fanspeed(String cmd) // TODO: use int values for PWM
+void fan(String cmd)
 {
-	/* //! OLD version without PWM
-	if (cmd == "ON")
-	{
-		fanON();
-		Serial.println("fan ON");
-	}
-	else if (cmd == "OFF")
-	{
-		fanOFF();
-		Serial.println("fan OFF");
-	}
-	else
-	{
-		Serial.println("ERROR: unknown FAN value: " + cmd);
-	}
-	*/
-
-	// //! new version with PWM
-	// char *ending;
-	// float speed_percentage = strtof(cmd.c_str(), &ending);
-	// if (*ending != 0)
-	// {
-	// 	// error
-	// 	Serial.println("ERROR: unknown FAN value: " + cmd);
-	// }
-	// else
-	// {
-	// 	setFanSpeed(speed_percentage);
-	// }
+	setFanSpeed(cmd.toInt());
 }
 
 void uvc(String cmd)
@@ -83,22 +40,17 @@ void uvc(String cmd)
 	}
 }
 
-void power(String cmd)
+void rgb(RGB rgb)
 {
-	if (cmd == "ON")
-	{
-		setDeviceState(true);
-		Serial.println("device ON");
-	}
-	else if (cmd == "OFF")
-	{
-		setDeviceState(false);
-		Serial.println("device OFF");
-	}
-	else
-	{
-		Serial.println("ERROR: unknown POWER value: " + cmd);
-	}
+	setCustomColor(rgb);
+
+	Serial.print("rgb (");
+	Serial.print(rgb.r);
+	Serial.print(",");
+	Serial.print(rgb.g);
+	Serial.print(",");
+	Serial.print(rgb.b);
+	Serial.println(")");
 }
 
 void autopilot(String cmd)
@@ -106,13 +58,13 @@ void autopilot(String cmd)
 	if (cmd == "ON")
 	{
 		relaisON();
-		fanON();
-		blue();
+		setFanSpeed(100);
+		setCustomColor(AUTOPILOT);
 
 		Serial.println("auto ON");
 		Serial.println("[AUTO] uvc ON");
 		Serial.println("[AUTO] fan ON");
-		Serial.println("[AUTO] rgb BLUE");
+		Serial.println("[AUTO] rgb AUTOPILOT");
 	}
 	else if (cmd == "OFF")
 	{
@@ -125,38 +77,28 @@ void autopilot(String cmd)
 	}
 }
 
-void rgb(String cmd) // cmd must be rgb value like "12,213,123"
+void power(String cmd)
 {
-	// // TODO: untested method
-	// // converts "r,g,b to RGB value"
-	// std::string str = cmd.c_str();
-	// vector<string> values{};
-	// char delimiter = ',';
+	debug("power");
+	if (cmd == "ON")
+	{
+		setDeviceState(true);
+		autopilot("ON");
+		Serial.println("device ON");
+	}
+	else if (cmd == "OFF")
+	{
+		setDeviceState(false);
+		setCustomColor(RGB(0, 0, 0)); //! UNTESTED: should turn off the LED stripe
+		fanOFF();
+		relaisOFF();
 
-	// istringstream sstream(str);
-	// string value;
-
-	// while (std::getline(sstream, value, delimiter))
-	// {
-	// 	value.erase(std::remove_if(value.begin(), value.end(), ispunct), value.end());
-	// 	values.push_back(value);
-	// }
-
-	// for (const string s : values)
-	// {
-	// 	// 
-	// 	char *ending;
-	// 	float v = strtof(s.c_str(), &ending);
-	// 	if (*ending != 0)
-	// 	{
-	// 		// error
-	// 		Serial.print("ERROR: unknown RGB value: " + cmd);
-	// 	}
-	// 	else
-	// 	{
-	// 		// TODO send RGB value to LEDstripe.h
-	// 	}
-	// }
+		Serial.println("device OFF");
+	}
+	else
+	{
+		Serial.println("ERROR: unknown POWER value: " + cmd);
+	}
 }
 
 void handleCommand(String topic, String cmd)
@@ -165,15 +107,15 @@ void handleCommand(String topic, String cmd)
 	{
 		debug(cmd);
 	}
-	else if (topic == "fanspeed")
+	else if (topic == "fan")
 	{
-		fanspeed(cmd);
+		fan(cmd);
 	}
 	else if (topic == "uvc")
 	{
 		uvc(cmd);
 	}
-	else if (topic == "power")
+	else if (topic == "device")
 	{
 		power(cmd);
 	}
@@ -183,10 +125,11 @@ void handleCommand(String topic, String cmd)
 	}
 	else if (topic == "rgb")
 	{
-		rgb(cmd);
+		// cmd must be rgb value like "12,213,123"
+		rgb(stringToRGB(cmd));
 	}
 	else
 	{
-		// do nothing
+		Serial.println("ERROR: unknown topic");
 	}
 }

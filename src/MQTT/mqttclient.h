@@ -65,30 +65,16 @@ void reconnect()
 	}
 }
 
-//? moved to "TemperatureController.h"
-// void publish_temperature(PubSubClient* client)
-// {
-//   const char *local_topic = "temperature";
-//   snprintf(msg, MSG_BUFFER_SIZE, "%d", getTemperature());
-
-//   Serial.print("Publish ");
-//   Serial.print(local_topic);
-//   Serial.print(": ");
-
-//   Serial.println(msg);
-//   client->publish(local_topic, msg);
-// }
-
 void keepalive(int value)
 {
 	const char *local_topic = "keepalive";
 	snprintf(msg, MSG_BUFFER_SIZE, "%d", value);
 
-	Serial.print("Publish ");
-	Serial.print(local_topic);
-	Serial.print(": ");
+	// Serial.print("Publish ");
+	// Serial.print(local_topic);
+	// Serial.print(": ");
+	// Serial.println(msg);
 
-	Serial.println(msg);
 	client->publish(local_topic, msg);
 }
 
@@ -117,6 +103,7 @@ void mqtt_setup()
 
 	client->setServer(mqtt_server, 8883);
 	client->setCallback(callback);
+	Serial.println("[SETUP] MQTT: DONE");
 }
 
 void mqtt_loop()
