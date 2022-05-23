@@ -11,4 +11,4 @@ COLOR           |   MEANING
 :yellow_heart:  |   no WIFI connection
 :heart:         |   device open
 :purple_heart:  |   -
-:blue_heart:    |   -
+:blue_heart:    |   autopilot active
