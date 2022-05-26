@@ -9,8 +9,8 @@
 #define TEMPERATURE D0 // Temperature sensor
 #define RELAIS D1      // Relais for UVC LEDs
 #define LED D2         // LED Stripe
-#define PWM_RELAIS D3  // transistor to turn off the fan
 #define PWM D4         // FAN PWM
+#define PWM_RELAIS D5  // transistor to turn off the fan
 
 /*
     Settings for LED Stripe

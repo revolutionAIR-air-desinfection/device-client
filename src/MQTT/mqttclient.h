@@ -10,7 +10,7 @@
 #include "DateTime.h"
 #include "../temperature/TemperatureController.h"
 
-const int update_interval = 2000;
+const int update_interval = 3000;
 
 BearSSL::CertStore certStore;
 WiFiClientSecure espClient;
@@ -42,7 +42,7 @@ void reconnect()
 	while (!client->connected())
 	{
 		Serial.print("Attempting MQTT connection…");
-		String clientId = "ESP8266Client - MyClient";
+		String clientId = "ESP8266Client";
 
 		if (client->connect(clientId.c_str(), mqtt_user, mqtt_password))
 		{
@@ -80,6 +80,7 @@ void keepalive(int value)
 
 void mqtt_setup()
 {
+	noInterrupts();
 	LittleFS.begin();
 	connectWIFI();
 	setDateTime();
@@ -104,10 +105,12 @@ void mqtt_setup()
 	client->setServer(mqtt_server, 8883);
 	client->setCallback(callback);
 	Serial.println("[SETUP] MQTT: DONE");
+	interrupts();
 }
 
 void mqtt_loop()
 {
+	noInterrupts();
 	if (!client->connected())
 	{
 		mqttServerDisconnected();
@@ -124,4 +127,5 @@ void mqtt_loop()
 		publish_temperature(client, msg, MSG_BUFFER_SIZE);
 		keepalive(value);
 	}
+	interrupts();
 }

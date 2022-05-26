@@ -31,6 +31,4 @@ void setup()
 void loop()
 {
     controller.run();
-    // mqtt_loop();
-    // ledStripe_loop();
 }

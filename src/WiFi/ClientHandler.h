@@ -19,7 +19,18 @@ void debug(String cmd)
 
 void fan(String cmd)
 {
-	setFanSpeed(cmd.toInt());
+	if (cmd == "ON")
+	{
+		fanON();
+	}
+	else if (cmd == "OFF")
+	{
+		fanOFF();
+	}
+	else
+	{
+		setFanSpeed(cmd.toInt());
+	}
 }
 
 void uvc(String cmd)
@@ -89,7 +100,7 @@ void power(String cmd)
 	else if (cmd == "OFF")
 	{
 		setDeviceState(false);
-		setCustomColor(RGB(0, 0, 0)); //! UNTESTED: should turn off the LED stripe
+		setCustomColor(RGB(255, 255, 255)); //! need resistor to turn off
 		fanOFF();
 		relaisOFF();
 

@@ -18,9 +18,9 @@ void connectWIFI()
 
 	while (WiFi.status() != WL_CONNECTED)
 	{
-		delay(500);
 		Serial.print(".");
 		wifiNotConnected(); // pulseWarning
+		delay(500);
 	}
 
 	randomSeed(micros());
