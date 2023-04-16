@@ -1,6 +1,6 @@
-src/credentials
+# src/credentials
 .pio
 src/.temp
 data
 .vscode
-revolutionAIR.code-workspace
+# revolutionAIR.code-workspace

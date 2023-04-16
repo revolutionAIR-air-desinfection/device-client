@@ -7,7 +7,7 @@
 // #include <Thread.h>
 // #include <ThreadController.h>
 
-// #include "mqtt/MqttClient.h"
+// #include "./MQTT/mqttclient.h"
 
 // ThreadController controller = ThreadController();
 
@@ -17,6 +17,7 @@
 // void setup()
 // {
 //     Serial.begin(9600);
+//     srand (static_cast <unsigned> (time(0))); // seeding random number generator
 
 //     ledStripe_setup();
 //     relais_setup();
@@ -35,6 +36,4 @@
 // void loop()
 // {
 //     controller.run();
-//     // mqtt_loop();
-//     // ledStripe_loop();
 // }

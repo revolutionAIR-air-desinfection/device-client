@@ -6,7 +6,7 @@
 #include <LittleFS.h>
 #include <CertStoreBearSSL.h>
 
-#include "../wifi/ConnectWIFI.h" 
+#include "../WiFi/connectWIFI.h" 
 #include "DateTime.h"
 #include "../temperature/TemperatureController.h"
 
